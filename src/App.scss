@@ -17,14 +17,25 @@ aside {
       td {
         padding: 2px 5px;
         background: linear-gradient(to bottom, #ffffff 0%, #e6e6e6 100%);
-        cursor: pointer;
-
       }
       &.highlighted {
         td {
           background: linear-gradient(to bottom, #ffffff 0%, lightyellow 100%);
           border: 1px solid gray;
           border-radius: 5px;
+        }
+      }
+      &.enabled {
+        cursor: pointer;
+        &:hover {
+          color: blue;
+          text-decoration: underline;
+        }
+
+      }
+      &.disabled {
+        td {
+          color: gray;
         }
       }
     }
@@ -36,6 +47,13 @@ aside {
   ul {
     padding-inline-start: 0;
 
+    li {
+      cursor: pointer;
+    }
+    li:hover {
+      color: blue;
+      text-decoration: underline;
+    }
   }
 }
 
@@ -46,7 +64,15 @@ aside {
     padding: 5px !important;
     border-radius: 5px;
   }
+}
 
+.map-marker-tooltip {
+  display: none;
+  &.highlighted {
+    font-weight: bold;
+    font-size: 18pt;
+    display: block;
+  }
 }
 
 main {
