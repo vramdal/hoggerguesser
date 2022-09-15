@@ -1,0 +1,59 @@
+#vazelina-app {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: row;
+}
+
+aside {
+  max-width: 200px;
+  flex: 1 0 auto;
+  border-right: 2px solid gray;
+  overflow: scroll;
+
+  table {
+    background-color: lightgray;
+
+    .song-row{
+      td {
+        padding: 2px 5px;
+        background: linear-gradient(to bottom, #ffffff 0%, #e6e6e6 100%);
+        cursor: pointer;
+
+      }
+      &.highlighted {
+        td {
+          background: linear-gradient(to bottom, #ffffff 0%, lightyellow 100%);
+          border: 1px solid gray;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+
+}
+
+.leaflet-popup-content {
+  ul {
+    padding-inline-start: 0;
+
+  }
+}
+
+.map-marker {
+  &.highlighted {
+    background-color: lightyellow;
+    border: 1px solid gray;
+    padding: 5px !important;
+    border-radius: 5px;
+  }
+
+}
+
+main {
+  flex: 1 0 auto;
+  .leaflet-container {
+    min-height: 200px;
+    height: 100%;
+    width: 100%;
+  }
+}
