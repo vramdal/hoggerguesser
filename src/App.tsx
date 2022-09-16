@@ -200,65 +200,69 @@ function App() {
   }
 
   return (
-
-    <div id="vazelina-app">
-      <aside>
-        <h1>Sanger</h1>
-        <table>
-          <tbody>
-          {songDisplay.map(song =>
-            <tr key={song.id}
-                className={classNames("song-row", {highlighted: song.highlighted, disabled: song.places.length === 0, enabled: song.places.length > 0})}
-                id={"song-" + song.id}>
-              <td onClick={() => songClicked(song.id)}>{song.title}</td>
-            </tr>)}
-          </tbody>
-        </table>
-      </aside>
-      <main>
-        <MapContainer center={[
-          60.659538204723106,
-          10.698810319462064
-        ]
-        } zoom={10} scrollWheelZoom={true} bounds={bounds}
-                      ref={setMapRef}
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <MyMapContainer bounds={bounds}>
-            <>
-              {mapMarkers.map(marker => {
-                const icon: Icon = new Icon({
-                  iconUrl: "/zlatkodesign-Car-wheel.png",
-                  iconSize: (marker.highlighted ? [30, 30] : [20, 20]),
-                  attribution: "Zlatko Design - https://freesvg.org/car-wheel-in-gray-color",
-                  className: classNames("map-marker", {highlighted: marker.highlighted}),
-                  tooltipAnchor: [0, 0]
-                });
-                return <Marker eventHandlers={{
-                  click: () => {
-                    markerClicked(marker.id);
-                  }
-                }} icon={icon} position={[marker.position.lat, marker.position.lng]} key={marker.id}
-                               interactive={true}
-                               title={marker.InfoWindowContent}>
-                  <Popup ref={marker.popup} className={"map-marker-popup"} >
-                    <h3>{marker.InfoWindowContent}</h3>
-                    <ul>
-                      {byPlaceId[marker.id].songs.map(song => <li key={song.id}
-                                                                  onClick={() => songClicked(song.id)}>{song.title}</li>)}
-                    </ul>
-                  </Popup>
-                  <Tooltip className={classNames("map-marker-tooltip", {highlightedLaks: marker.highlighted})} direction={"top"} permanent ref={marker.tooltip}>{marker.InfoWindowContent}</Tooltip>
-                </Marker>;
-              })}
-            </>
-          </MyMapContainer>
-        </MapContainer>
-      </main>
-    </div>
+    <>
+      <header>
+        <h1>Vazelina-atlas</h1>
+      </header>
+      <div id="vazelina-app">
+        <aside>
+          <h1>Sanger</h1>
+          <table>
+            <tbody>
+            {songDisplay.map(song =>
+              <tr key={song.id}
+                  className={classNames("song-row", {highlighted: song.highlighted, disabled: song.places.length === 0, enabled: song.places.length > 0})}
+                  id={"song-" + song.id}>
+                <td onClick={() => songClicked(song.id)}>{song.title}</td>
+              </tr>)}
+            </tbody>
+          </table>
+        </aside>
+        <main>
+          <MapContainer center={[
+            60.659538204723106,
+            10.698810319462064
+          ]
+          } zoom={10} scrollWheelZoom={true} bounds={bounds}
+                        ref={setMapRef}
+          >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <MyMapContainer bounds={bounds}>
+              <>
+                {mapMarkers.map(marker => {
+                  const icon: Icon = new Icon({
+                    iconUrl: "/zlatkodesign-Car-wheel.png",
+                    iconSize: (marker.highlighted ? [30, 30] : [20, 20]),
+                    attribution: "Zlatko Design - https://freesvg.org/car-wheel-in-gray-color",
+                    className: classNames("map-marker", {highlighted: marker.highlighted}),
+                    tooltipAnchor: [0, 0]
+                  });
+                  return <Marker eventHandlers={{
+                    click: () => {
+                      markerClicked(marker.id);
+                    }
+                  }} icon={icon} position={[marker.position.lat, marker.position.lng]} key={marker.id}
+                                 interactive={true}
+                                 title={marker.InfoWindowContent}>
+                    <Popup ref={marker.popup} className={"map-marker-popup"} >
+                      <h3>{marker.InfoWindowContent}</h3>
+                      <ul>
+                        {byPlaceId[marker.id].songs.map(song => <li key={song.id}
+                                                                    onClick={() => songClicked(song.id)}>{song.title}</li>)}
+                      </ul>
+                    </Popup>
+                    <Tooltip className={classNames("map-marker-tooltip", {highlightedLaks: marker.highlighted})} direction={"top"} permanent ref={marker.tooltip}>{marker.InfoWindowContent}</Tooltip>
+                  </Marker>;
+                })}
+              </>
+            </MyMapContainer>
+          </MapContainer>
+        </main>
+      </div>
+    </>
   );
 }
 

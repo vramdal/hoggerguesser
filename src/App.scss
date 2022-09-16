@@ -1,12 +1,28 @@
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 #vazelina-app {
   display: flex;
-  flex: 1 0 auto;
+  flex-grow: 1;
   flex-direction: row;
+  justify-content: center;
+  min-height: 350px;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
 }
 
 aside {
   max-width: 200px;
-  flex: 1 0 auto;
+  flex-grow: 1;
   border-right: 2px solid gray;
   overflow: scroll;
 
