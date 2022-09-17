@@ -29,6 +29,8 @@
 
  .game-round-result {
    padding: 5px;
+   display: flex;
+   flex-direction: column;
   &.answer-wrong {
     background-color: rgba(255, 0, 0, 0.5);
   }
@@ -36,4 +38,11 @@
   &.answer-correct {
     background-color: rgba(0, 255, 0, 0.5);
   }
+
+   button {
+     font-size: 14pt;
+      border-radius: 10px;
+     justify-self: stretch;
+     display: block;
+   }
 }

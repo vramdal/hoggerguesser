@@ -1,6 +1,6 @@
 import { Song } from "./types";
 import Control from "react-leaflet-custom-control";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import './Game.scss';
 import classNames from "classnames";
 
@@ -22,7 +22,6 @@ const Game = ({
               }
 ) => {
 
-  const songsWithPlaces = songs.filter(song => song.places.length > 0);
 
   const [gameNum, setGameNum] = useState<number>(0);
   const [correctSong, setCorrectSong] = useState<Song | undefined>(undefined);
@@ -35,7 +34,10 @@ const Game = ({
     hintsUsed: number}>>([]);
   const [totalPoints, setTotalPoints] = useState<number>(0);
 
+  const memoizedZoomToSong = useCallback((songId: number) => zoomToSong(songId), []);
+
   useEffect(() => {
+    const songsWithPlaces = songs.filter(song => song.places.length > 0);
     const shuffledSongList = songsWithPlaces.sort(() => Math.random() - 0.5);
     const correctSong = shuffledSongList[0];
     const selectedSongPlaces = correctSong.places;
@@ -43,9 +45,13 @@ const Game = ({
     const candidateSongs = shuffledSongList.filter(song => !excludedSongs.includes(song)).slice(0, 4).concat(correctSong);
     setCandidates(candidateSongs.sort(() => Math.random() - 0.5));
     setCorrectSong(correctSong);
-    setRounds([...rounds, {correctSong, points: 0, hintsUsed: 0, status: undefined}]);
+    const newRound = {correctSong, points: 0, hintsUsed: 0, status: undefined};
+    setRounds(rounds => {
+      rounds[gameNum] = newRound;
+      return [...rounds];
+    });
     console.log('correctSong = ', correctSong);
-  }, [gameNum]);
+  }, [gameNum, songs]);
 
   useEffect(() => {
     setTotalPoints(rounds.reduce((acc, round) => acc + round.points, 0));
@@ -54,9 +60,9 @@ const Game = ({
   useEffect(() => {
     if (correctSong) {
       console.log("Zoomer til sangen: ", correctSong.title);
-      zoomToSong(correctSong.id);
+      memoizedZoomToSong(correctSong.id);
     }
-  }, [correctSong]);
+  }, [correctSong, memoizedZoomToSong]);
 
   const advanceGame = () => {
     setGameNum(gameNum + 1);
@@ -66,8 +72,9 @@ const Game = ({
   const handleAnswer = (gameNum: number, answeredSongId: number, points: number) => {
     const round = rounds[gameNum];
     const answeredSong = songs.find(song => song.id === answeredSongId);
+    console.log("answeredSong = ", answeredSong!.title, "correctSongId = ", round.correctSong.title);
     let status : AnswerStatus;
-    if (answeredSongId == round.correctSong.id ) {
+    if (answeredSongId === round.correctSong.id ) {
       status = 'CORRECT';
     } else {
       status = 'WRONG';
@@ -112,7 +119,7 @@ const GameRoundResult = (props: {answerStatus: AnswerStatus, answeredSong: Song}
     <h1>Feil</h1>
     Riktig svar var <h2>{game.correctSong.title}</h2>
     </>}
-    <p><button onClick={game.advanceGame}>Neste</button> </p>
+    <button onClick={game.advanceGame}>Neste</button>
   </Control>
 };
 
