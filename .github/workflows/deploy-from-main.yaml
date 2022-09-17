@@ -13,9 +13,13 @@ jobs:
       id-token: write
       contents: read
     steps:
-      - uses: actions/checkout@v2
-      - name: Deploy react app to github pages
-        uses: tanwanimohit/deploy-react-to-ghpages@v1.0.1
+      - uses: actions/checkout@v3.0.2
+      - name: Deploy to GitHub Pages
+        if: success()
+        uses: crazy-max/ghaction-github-pages@v3
+        with:
+          target_branch: gh-pages
+          build_dir: build
         env:
-          CI: false
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
