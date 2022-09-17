@@ -1,6 +1,6 @@
 import { Song } from "./types";
 import Control from "react-leaflet-custom-control";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import './Game.scss';
 import classNames from "classnames";
 
@@ -34,8 +34,6 @@ const Game = ({
     hintsUsed: number}>>([]);
   const [totalPoints, setTotalPoints] = useState<number>(0);
 
-  const memoizedZoomToSong = useCallback((songId: number) => zoomToSong(songId), []);
-
   useEffect(() => {
     const songsWithPlaces = songs.filter(song => song.places.length > 0);
     const shuffledSongList = songsWithPlaces.sort(() => Math.random() - 0.5);
@@ -60,16 +58,16 @@ const Game = ({
   useEffect(() => {
     if (correctSong) {
       console.log("Zoomer til sangen: ", correctSong.title);
-      memoizedZoomToSong(correctSong.id);
+      zoomToSong(correctSong.id);
     }
-  }, [correctSong, memoizedZoomToSong]);
+  }, [correctSong, zoomToSong]);
 
-  const advanceGame = () => {
-    setGameNum(gameNum + 1);
+  const advanceGame = React.useCallback(() => {
+    setGameNum(gameNum => gameNum + 1);
     removeHighlighting();
-  }
+  }, [removeHighlighting]);
 
-  const handleAnswer = (gameNum: number, answeredSongId: number, points: number) => {
+  const handleAnswer = React.useCallback((gameNum: number, answeredSongId: number, points: number) => {
     const round = rounds[gameNum];
     const answeredSong = songs.find(song => song.id === answeredSongId);
     console.log("answeredSong = ", answeredSong!.title, "correctSongId = ", round.correctSong.title);
@@ -82,7 +80,7 @@ const Game = ({
     }
     setRounds([...rounds.slice(0, gameNum), {...round, answeredSong, points, status}, ...rounds.slice(gameNum + 1)]);
     showSongTooltips(round.correctSong.id);
-  }
+  }, [rounds, songs, showSongTooltips, setRounds]);
 
   return <>
     <GameContext.Provider value={{advanceGame, correctSong: correctSong!, showTooltipHints: () => showSongTooltips(correctSong!.id)}}>
@@ -163,7 +161,7 @@ const GameRound = ({
   const answerButtonClicked = (song: Song) => {
     setAnsweredSong(song);
     answerSelected(gameNum, song.id, countdown );
-  }
+  };
 
   const game = useGame();
 

@@ -33,6 +33,35 @@ type PlaceMap = { [key: number]: PlaceMapRecord };
 
 type MapMarkerDisplay = MapMarkerSpec & { highlighted: boolean, popup: RefObject<LeafletPopup>, tooltip: RefObject<LeafletTooltip> };
 
+function highlightMarkers(placeIds: Array<number>, oldMapMarkers: Array<MapMarkerDisplay>) {
+  return oldMapMarkers.map(marker => ({
+    ...marker,
+    highlighted: placeIds.includes(marker.id),
+    lowlighted: !placeIds.includes(marker.id)
+  }));
+}
+
+
+const adjustToViewBounds = (coordinatesList: Array<[number, number]>) => {
+  const [firstPlace, ...otherPlaces] = coordinatesList;
+  const place1 = {lng: firstPlace[0], lat: firstPlace[1]};
+  const place2 = {lng: firstPlace[0] , lat: firstPlace[1]};
+  const bounds = new LatLngBounds(place1, place2);
+  for (const place of otherPlaces) {
+    bounds.extend({lng: place[0], lat: place[1]});
+  }
+  // setBounds(bounds);
+  return bounds;
+}
+
+function highlightPlaces(placesIds: Array<number>, mapMarkers: Array<MapMarkerDisplay>) {
+  const allTooltips = mapMarkers.map(marker => marker.tooltip.current!.getElement()!);
+  allTooltips.forEach(tooltip => tooltip.classList.remove("highlighted"));
+  const markers = mapMarkers.filter(marker => placesIds.includes(marker.id));
+  markers.forEach(marker => marker.tooltip.current!.getElement()!.classList.add("highlighted"));
+}
+
+
 function App(props: {mode: 'game' | 'atlas'}) {
 
   const loadSongs = () => {
@@ -144,15 +173,6 @@ function App(props: {mode: 'game' | 'atlas'}) {
     setSongDisplay(newSongDisplay);
   }
 
-  function highlightMarkers(placeIds: Array<number>) {
-    const newMapMarkers = mapMarkers.map(marker => ({
-      ...marker,
-      highlighted: placeIds.includes(marker.id),
-      lowlighted: !placeIds.includes(marker.id)
-    }));
-    setMapMarkers(newMapMarkers);
-  }
-
   function scrollSongIntoView(songId: number) {
     document.getElementById(`song-${songId}`)!.scrollIntoView({
       behavior: "smooth",
@@ -166,29 +186,11 @@ function App(props: {mode: 'game' | 'atlas'}) {
       const firstSong = songs[0].id;
       if (props.mode === "atlas") { scrollSongIntoView(firstSong); }
       highlightSongs(songs);
-      highlightMarkers([placeId]);
+      setMapMarkers(highlightMarkers([placeId], mapMarkers));
     } catch (e) {
       console.error(e);
       setSongDisplay(songDisplay.map(song => ({...song, highlighted: false})));
     }
-  }
-
-  const adjustToViewBounds = (coordinatesList: Array<[number, number]>) => {
-    const [firstPlace, ...otherPlaces] = coordinatesList;
-    const place1 = {lng: firstPlace[0], lat: firstPlace[1]};
-    const place2 = {lng: firstPlace[0] , lat: firstPlace[1]};
-    const bounds = new LatLngBounds(place1, place2);
-    for (const place of otherPlaces) {
-      bounds.extend({lng: place[0], lat: place[1]});
-    }
-    setBounds(bounds);
-  }
-
-  function highlightPlaces(placesIds: Array<number>) {
-    const allTooltips = mapMarkers.map(marker => marker.tooltip.current!.getElement()!);
-    allTooltips.forEach(tooltip => tooltip.classList.remove("highlighted"));
-    const markers = mapMarkers.filter(marker => placesIds.includes(marker.id));
-    markers.forEach(marker => marker.tooltip.current!.getElement()!.classList.add("highlighted"));
   }
 
   const songClicked = (songId: number) => {
@@ -196,50 +198,57 @@ function App(props: {mode: 'game' | 'atlas'}) {
     setSongDisplay(newSongDisplay);
     const places = bySongId[songId].places;
     const placeIds = places.map(place => place.id);
-    highlightMarkers(placeIds);
-    highlightPlaces(placeIds);
-    adjustToViewBounds(places.map(place => place.coordinates));
+    setMapMarkers(highlightMarkers(placeIds, mapMarkers));
+    highlightPlaces(placeIds, mapMarkers);
+    setBounds(adjustToViewBounds(places.map(place => place.coordinates)));
     scrollSongIntoView(songId);
     mapRef!.closePopup();
   }
 
-  const zoomToSong = (songId: number) => {
+  const zoomToSong = React.useCallback((songId: number) => {
     const places = bySongId[songId].places;
-    adjustToViewBounds(places.map(place => place.coordinates));
-    highlightMarkers(places.map(place => place.id));
-  }
+    setBounds(adjustToViewBounds(places.map(place => place.coordinates)));
+    setMapMarkers(mapMarkers => highlightMarkers(places.map(place => place.id), mapMarkers));
+  }, [bySongId, setMapMarkers, setBounds]);
 
-  const showSongTooltips = (songId: number) => {
-    const places = bySongId[songId].places;
-    highlightPlaces(places.map(place => place.id));
-  }
+  const showSongTooltips = React.useCallback((songId: number) => {
+    setMapMarkers(mapMarkers => {
+      const places = bySongId[songId].places;
+      highlightPlaces(places.map(place => place.id), mapMarkers);
+      return mapMarkers;
+    });
+  }, [bySongId, setMapMarkers]);
 
-  const removeHighlighting = () => {
-    highlightMarkers([]);
-    highlightPlaces([]);
-  }
+  const removeHighlighting = React.useCallback(() => {
+    setMapMarkers(
+      mapMarkers => {
+        highlightPlaces([], mapMarkers);
+        return highlightMarkers([], mapMarkers);
+      }
+    );
+  }, [setMapMarkers]);
 
   return (
     <>
       {props.mode === "atlas" && <header>
-        <h1>Vazelina-atlas</h1>
+          <h1>Vazelina-atlas</h1>
       </header>}
       {props.mode === "game" && <header>
-        <h1>Høgger-geo-guesser</h1>
+          <h1>Høgger-geo-guesser</h1>
       </header>}
       <div id="vazelina-app">
         {props.mode === "atlas" && <aside>
-          <h1>Sanger</h1>
-          <table>
-            <tbody>
-            {songDisplay.map(song =>
-              <tr key={song.id}
-                  className={classNames("song-row", {highlighted: song.highlighted, disabled: song.places.length === 0, enabled: song.places.length > 0})}
-                  id={"song-" + song.id}>
-                <td onClick={() => songClicked(song.id)}>{song.title}</td>
-              </tr>)}
-            </tbody>
-          </table>
+            <h1>Sanger</h1>
+            <table>
+                <tbody>
+                {songDisplay.map(song =>
+                  <tr key={song.id}
+                      className={classNames("song-row", {highlighted: song.highlighted, disabled: song.places.length === 0, enabled: song.places.length > 0})}
+                      id={"song-" + song.id}>
+                    <td onClick={() => songClicked(song.id)}>{song.title}</td>
+                  </tr>)}
+                </tbody>
+            </table>
         </aside>}
         <main>
           <MapContainer center={[
@@ -254,7 +263,7 @@ function App(props: {mode: 'game' | 'atlas'}) {
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-{/*
+            {/*
             <Pane name={"game-gui-pane"}>
               <Circle center={[
                 60.81945839006743,
@@ -265,7 +274,7 @@ function App(props: {mode: 'game' | 'atlas'}) {
             </Pane>
 */}
 
-{/*
+            {/*
             <Control position="bottomleft" container={{className: "game-gui"}}>
               <h1>Hvilken sang er dette?</h1>
               <button>Borghild</button>
@@ -296,11 +305,11 @@ function App(props: {mode: 'game' | 'atlas'}) {
                   }} icon={icon} position={[marker.position.lat, marker.position.lng]} key={marker.id}
                                  interactive={true}>
                     {props.mode === "atlas" && <Popup ref={marker.popup} className={"map-marker-popup"}  >
-                      <h3>{marker.InfoWindowContent}</h3>
-                      <ul>
-                        {byPlaceId[marker.id].songs.map(song => <li key={song.id}
-                                                                    onClick={() => songClicked(song.id)}>{song.title}</li>)}
-                      </ul>
+                        <h3>{marker.InfoWindowContent}</h3>
+                        <ul>
+                          {byPlaceId[marker.id].songs.map(song => <li key={song.id}
+                                                                      onClick={() => songClicked(song.id)}>{song.title}</li>)}
+                        </ul>
                     </Popup>}
                     <Tooltip className={classNames("map-marker-tooltip", {highlightedLaks: marker.highlighted})} direction={"right"} permanent ref={marker.tooltip}>{marker.InfoWindowContent}</Tooltip>
                   </Marker>;
