@@ -8,9 +8,10 @@ import {
   LatLngBounds,
   Map as LeafletMap,
   Popup as LeafletPopup,
-  Tooltip as LeafletTooltip
+  Tooltip as LeafletTooltip,
 } from "leaflet";
 import classNames from "classnames";
+import Game from "./Game";
 
 type SongPlace = {
   name: string,
@@ -32,7 +33,7 @@ type PlaceMap = { [key: number]: PlaceMapRecord };
 
 type MapMarkerDisplay = MapMarkerSpec & { highlighted: boolean, popup: RefObject<LeafletPopup>, tooltip: RefObject<LeafletTooltip> };
 
-function App() {
+function App(props: {mode: 'game' | 'atlas'}) {
 
   const loadSongs = () => {
     let dataSourceUrl = "/data/songs.json"; // "https://script.google.com/macros/s/AKfycbzQAduClf9OCizvJijFakTd5T1rptkcA3hTShnkkDVXTxHGD9Bbi1gBT9SuFDRtWLTi/exec?data=songs";
@@ -51,6 +52,7 @@ function App() {
   const [songDisplay, setSongDisplay] = React.useState<Array<Song & {highlighted: boolean}>>([]);
   const [bounds, setBounds] = React.useState<LatLngBounds>();
   const [mapRef, setMapRef] = React.useState<LeafletMap | null>(null);
+  const [isLoaded, setIsLoaded] = React.useState<boolean>(false);
 
   const featureToMarker: (feature: Feature) => MapMarkerDisplay = (feature: Feature) => {
     const coordinates = feature.geometry.coordinates;
@@ -118,6 +120,7 @@ function App() {
       setBySongId(mergeBySongId(songs, mapFeatures));
       setByPlaceId(mergeByPlaceId(songs, mapFeatures));
       setMapMarkers(mapFeatures.map(featureToMarker));
+      setIsLoaded(true);
     })
   }, []);
 
@@ -144,7 +147,8 @@ function App() {
   function highlightMarkers(placeIds: Array<number>) {
     const newMapMarkers = mapMarkers.map(marker => ({
       ...marker,
-      highlighted: placeIds.includes(marker.id)
+      highlighted: placeIds.includes(marker.id),
+      lowlighted: !placeIds.includes(marker.id)
     }));
     setMapMarkers(newMapMarkers);
   }
@@ -160,7 +164,7 @@ function App() {
     try {
       const songs = byPlaceId[placeId].songs;
       const firstSong = songs[0].id;
-      scrollSongIntoView(firstSong);
+      if (props.mode === "atlas") { scrollSongIntoView(firstSong); }
       highlightSongs(songs);
       highlightMarkers([placeId]);
     } catch (e) {
@@ -199,13 +203,32 @@ function App() {
     mapRef!.closePopup();
   }
 
+  const zoomToSong = (songId: number) => {
+    const places = bySongId[songId].places;
+    adjustToViewBounds(places.map(place => place.coordinates));
+    highlightMarkers(places.map(place => place.id));
+  }
+
+  const showSongTooltips = (songId: number) => {
+    const places = bySongId[songId].places;
+    highlightPlaces(places.map(place => place.id));
+  }
+
+  const removeHighlighting = () => {
+    highlightMarkers([]);
+    highlightPlaces([]);
+  }
+
   return (
     <>
-      <header>
+      {props.mode === "atlas" && <header>
         <h1>Vazelina-atlas</h1>
-      </header>
+      </header>}
+      {props.mode === "game" && <header>
+        <h1>Høgger-geo-guesser</h1>
+      </header>}
       <div id="vazelina-app">
-        <aside>
+        {props.mode === "atlas" && <aside>
           <h1>Sanger</h1>
           <table>
             <tbody>
@@ -217,7 +240,7 @@ function App() {
               </tr>)}
             </tbody>
           </table>
-        </aside>
+        </aside>}
         <main>
           <MapContainer center={[
             60.659538204723106,
@@ -226,10 +249,36 @@ function App() {
           } zoom={10} scrollWheelZoom={true} bounds={bounds}
                         ref={setMapRef}
           >
+
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
+{/*
+            <Pane name={"game-gui-pane"}>
+              <Circle center={[
+                60.81945839006743,
+                11.343143733783839,
+
+              ]
+              } radius={200} pathOptions={{ color: 'blue' }} className={"my-circle"}/>
+            </Pane>
+*/}
+
+{/*
+            <Control position="bottomleft" container={{className: "game-gui"}}>
+              <h1>Hvilken sang er dette?</h1>
+              <button>Borghild</button>
+              <button>Feil sie ta Mjøsa</button>
+            </Control>
+*/}
+
+            {isLoaded &&
+                <Game songs={songs}
+                      zoomToSong={zoomToSong}
+                      showSongTooltips={showSongTooltips}
+                      removeHighlighting={removeHighlighting}
+                />}
             <MyMapContainer bounds={bounds}>
               <>
                 {mapMarkers.map(marker => {
@@ -245,16 +294,15 @@ function App() {
                       markerClicked(marker.id);
                     }
                   }} icon={icon} position={[marker.position.lat, marker.position.lng]} key={marker.id}
-                                 interactive={true}
-                                 title={marker.InfoWindowContent}>
-                    <Popup ref={marker.popup} className={"map-marker-popup"} >
+                                 interactive={true}>
+                    {props.mode === "atlas" && <Popup ref={marker.popup} className={"map-marker-popup"}  >
                       <h3>{marker.InfoWindowContent}</h3>
                       <ul>
                         {byPlaceId[marker.id].songs.map(song => <li key={song.id}
                                                                     onClick={() => songClicked(song.id)}>{song.title}</li>)}
                       </ul>
-                    </Popup>
-                    <Tooltip className={classNames("map-marker-tooltip", {highlightedLaks: marker.highlighted})} direction={"top"} permanent ref={marker.tooltip}>{marker.InfoWindowContent}</Tooltip>
+                    </Popup>}
+                    <Tooltip className={classNames("map-marker-tooltip", {highlightedLaks: marker.highlighted})} direction={"right"} permanent ref={marker.tooltip}>{marker.InfoWindowContent}</Tooltip>
                   </Marker>;
                 })}
               </>
@@ -272,7 +320,7 @@ const MyMapContainer = ({bounds, children } : {bounds?: LatLngBounds, children: 
 
   useEffect(() => {
     if (bounds) {
-      myMap.fitBounds(bounds, {padding: [20, 20], animate: true, maxZoom: 15});
+      myMap.flyToBounds(bounds, {padding: [20, 20], paddingBottomRight: [0, 250], animate: true, maxZoom: 15, duration: 2});
     }
   }, [bounds, myMap]);
 

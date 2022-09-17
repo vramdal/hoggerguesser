@@ -1340,6 +1340,21 @@
       "type": "Feature",
       "properties": {
         "id": 89,
+        "radius": 0.2,
+        "title": "Toten museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.753427,
+          60.702235
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 90,
         "radius": 2,
         "title": "Tromsø"
       },
@@ -1354,7 +1369,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 90,
+        "id": 91,
         "radius": 1800,
         "title": "USA"
       },
@@ -1369,7 +1384,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 91,
+        "id": 92,
         "radius": 20,
         "title": "Valdres"
       },
@@ -1384,7 +1399,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 92,
+        "id": 93,
         "radius": 10,
         "title": "Valdresfjell"
       },
@@ -1399,7 +1414,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 93,
+        "id": 94,
         "radius": 15,
         "title": "Vang i Valdres"
       },
@@ -1414,7 +1429,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 94,
+        "id": 95,
         "radius": 1,
         "title": "Varangerbotn"
       },
@@ -1429,7 +1444,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 95,
+        "id": 96,
         "radius": 0.5,
         "title": "Vardal"
       },
@@ -1444,7 +1459,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 96,
+        "id": 97,
         "radius": 25,
         "title": "Vestoppland"
       },
@@ -1459,7 +1474,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 97,
+        "id": 98,
         "radius": 0.7,
         "title": "Vingrom"
       },
@@ -1474,7 +1489,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 98,
+        "id": 99,
         "radius": 2,
         "title": "Voss"
       },
@@ -1489,7 +1504,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 99,
+        "id": 100,
         "radius": 65,
         "title": "Värmland"
       },
@@ -1504,7 +1519,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 100,
+        "id": 101,
         "radius": 0.4,
         "title": "Vålerenga"
       },
@@ -1519,7 +1534,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 101,
+        "id": 102,
         "radius": 85,
         "title": "Zululand"
       },
@@ -1534,7 +1549,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 102,
+        "id": 103,
         "radius": 1.5,
         "title": "Åmotfors"
       },
@@ -1549,7 +1564,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 103,
+        "id": 104,
         "radius": 30,
         "title": "Ås"
       },
@@ -1564,7 +1579,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 104,
+        "id": 105,
         "radius": 10,
         "title": "Glomma"
       },
