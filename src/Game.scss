@@ -1,8 +1,14 @@
+.game-welcome, .game-summary, .game-round-gui {
+  background-color: lightyellow;
+  opacity: 0.8;
+  padding: 5px 5px 100px;
+
+}
+
 .game-round-gui {
   //background-color: rgba(255, 255, 255, 0.5);
   background-color: lightyellow;
   opacity: 0.8;
-  padding: 5px 5px calc(6em + env(safe-area-inset-bottom));
   padding: 5px 5px 100px;
 
   h1 {
