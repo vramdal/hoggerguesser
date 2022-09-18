@@ -114,7 +114,6 @@ const Game = ({
                   roundNum={roundNum}
                   candidates={candidates}
                   answerSelected={handleAnswer}
-                  correctSong={correctSong}
                   status={rounds[roundNum]?.status || undefined}
               />
           </>
@@ -177,21 +176,17 @@ const GameRound = ({
                      candidates,
                      answerSelected,
                      status,
-                     correctSong
                    }: {
   roundNum: number,
   candidates: Array<Song>,
   answerSelected: (roundNum : number, songId: number, bonus: number) => void,
   status: AnswerStatus,
-  correctSong: Song
 }) => {
   const [countdown, setCountdown] = useState<number>(1000);
   const [answeredSong, setAnsweredSong] = useState<Song | undefined>(undefined);
-  const [hintUsed, setHintUsed] = useState<boolean>(false);
 
   useEffect(() => {
     setCountdown(1000);
-    setHintUsed(false);
   }, [roundNum]);
 
   useEffect(() => {
@@ -216,8 +211,6 @@ const GameRound = ({
     answerSelected(roundNum, song.id, countdown );
   };
 
-  const game = useGame();
-
   return <>
     {status !== undefined && <GameRoundResult answerStatus={status} answeredSong={answeredSong!}/>}
     <Control position="bottomleft" container={{className: classNames("game-round-gui")}}>
@@ -232,14 +225,6 @@ const GameRound = ({
 
       <p>Poeng: {countdown}
         <br/> <meter value={countdown} max={1000} min={500} low={600} optimum={700} style={{width: "100%"}}/> </p>
-      <p>
-        <button disabled={hintUsed} onClick={() => {
-          setHintUsed(true);
-          setCountdown(countdown => countdown - 200);
-          game.showTooltipHints(correctSong.id);
-        }}>Vis stedsnavn (-200 poeng)
-        </button>
-      </p>
     </Control></>
 }
 
