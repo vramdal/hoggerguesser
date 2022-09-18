@@ -250,7 +250,7 @@ function App(props: {mode: 'game' | 'atlas'}) {
                 </tbody>
             </table>
         </aside>}
-        <main>
+        <main className={classNames("app-mode", props.mode)}>
           <MapContainer center={[
             60.659538204723106,
             10.698810319462064
@@ -295,12 +295,12 @@ function App(props: {mode: 'game' | 'atlas'}) {
                     iconUrl: "/hoggerguesser/zlatkodesign-Car-wheel.png",
                     iconSize: (marker.highlighted ? [30, 30] : [20, 20]),
                     attribution: "Zlatko Design - https://freesvg.org/car-wheel-in-gray-color",
-                    className: classNames("map-marker", {highlighted: marker.highlighted}),
+                    className: classNames("map-marker", {highlighted: marker.highlighted, lowlighted: !marker.highlighted}),
                     tooltipAnchor: [0, 0]
                   });
                   return <Marker eventHandlers={{
                     click: () => {
-                      markerClicked(marker.id);
+                      if (props.mode === "atlas") markerClicked(marker.id);
                     }
                   }} icon={icon} position={[marker.position.lat, marker.position.lng]} key={marker.id}
                                  interactive={true}>
@@ -329,7 +329,7 @@ const MyMapContainer = ({bounds, children } : {bounds?: LatLngBounds, children: 
 
   useEffect(() => {
     if (bounds) {
-      myMap.flyToBounds(bounds, {padding: [20, 20], paddingBottomRight: [0, 250], animate: true, maxZoom: 15, duration: 2});
+      myMap.flyToBounds(bounds, {padding: [20, 20], paddingBottomRight: [0, 350], animate: true, maxZoom: 15, duration: 2});
     }
   }, [bounds, myMap]);
 

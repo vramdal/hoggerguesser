@@ -89,6 +89,11 @@ aside {
   }
 }
 
+.app-mode .map-marker.lowlighted {
+  display: none;
+
+}
+
 .map-marker-tooltip {
   display: none;
   &.highlighted {

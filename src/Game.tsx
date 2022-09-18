@@ -48,7 +48,6 @@ const Game = ({
       rounds[gameNum] = newRound;
       return [...rounds];
     });
-    console.log('correctSong = ', correctSong);
   }, [gameNum, songs]);
 
   useEffect(() => {
