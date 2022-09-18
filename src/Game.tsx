@@ -9,7 +9,7 @@ type AnswerStatus = 'CORRECT' | 'WRONG' | undefined;
 const SHOW_WELCOME_SCREEN = -1;
 const ROUND_COUNT = 5;
 
-type GameContextType = { advanceGame: () => void, correctSong: Song, showTooltipHints: () => void };
+type GameContextType = { advanceGame: () => void, correctSong: Song, showTooltipHints: (songId: number) => void };
 const GameContext = React.createContext<GameContextType | undefined>(undefined);
 
 type Round = {
@@ -71,6 +71,7 @@ const Game = ({
     if (correctSong) {
       console.log("Zoomer til sangen: ", correctSong.title);
       zoomToSong(correctSong.id);
+      showSongTooltips(correctSong.id);
     }
   }, [correctSong, zoomToSong]);
 
@@ -101,9 +102,9 @@ const Game = ({
   }, [setRoundNum]);
 
   return <>
-    <GameContext.Provider value={{advanceGame, correctSong: correctSong!, showTooltipHints: () => showSongTooltips(correctSong!.id)}}>
+    <GameContext.Provider value={{advanceGame, correctSong: correctSong!, showTooltipHints: (songId: number) => showSongTooltips(songId)}}>
       {roundNum === SHOW_WELCOME_SCREEN && <GameWelcome startGame={startGame}/>}
-      {roundNum > SHOW_WELCOME_SCREEN && roundNum < ROUND_COUNT  &&
+      {roundNum > SHOW_WELCOME_SCREEN && roundNum < ROUND_COUNT  && correctSong &&
           <>
               <Control position="topright">
                   <h1>Poengsum: {totalPoints}</h1>
@@ -113,6 +114,7 @@ const Game = ({
                   roundNum={roundNum}
                   candidates={candidates}
                   answerSelected={handleAnswer}
+                  correctSong={correctSong}
                   status={rounds[roundNum]?.status || undefined}
               />
           </>
@@ -175,11 +177,13 @@ const GameRound = ({
                      candidates,
                      answerSelected,
                      status,
+                     correctSong
                    }: {
   roundNum: number,
   candidates: Array<Song>,
   answerSelected: (roundNum : number, songId: number, bonus: number) => void,
   status: AnswerStatus,
+  correctSong: Song
 }) => {
   const [countdown, setCountdown] = useState<number>(1000);
   const [answeredSong, setAnsweredSong] = useState<Song | undefined>(undefined);
@@ -232,7 +236,7 @@ const GameRound = ({
         <button disabled={hintUsed} onClick={() => {
           setHintUsed(true);
           setCountdown(countdown => countdown - 200);
-          game.showTooltipHints()
+          game.showTooltipHints(correctSong.id);
         }}>Vis stedsnavn (-200 poeng)
         </button>
       </p>
