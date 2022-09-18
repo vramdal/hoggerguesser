@@ -98,9 +98,7 @@
   },
   {
     "title": "Bil' er klar for høgging",
-    "places": [
-      "Skomperud"
-    ],
+    "places": [],
     "id": 17
   },
   {
@@ -772,8 +770,7 @@
     "title": "Je treng itte dra tel Memphis",
     "places": [
       "Memphis",
-      "Nashville",
-      "Amerika"
+      "Nashville"
     ],
     "id": 129
   },
