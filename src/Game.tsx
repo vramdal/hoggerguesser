@@ -49,10 +49,11 @@ const Game = ({
 
   useEffect(() => {
     if (roundNum > -1 && roundNum < ROUND_COUNT) {
+      const songsWithPlaces = songs.filter(song => song.places.length > 0);
       const correctSong = shuffledSongList[roundNum];
       const selectedSongPlaces = correctSong.places;
       const excludedSongs = shuffledSongList.filter(song => song.places.every(place => selectedSongPlaces.includes(place)));
-      const candidateSongs = shuffledSongList.filter(song => !excludedSongs.includes(song)).slice(0, 4).concat(correctSong);
+      const candidateSongs = songs.sort(() => Math.random() - 0.5).filter(song => !excludedSongs.includes(song)).slice(0, 4).concat(correctSong);
       setCandidates(candidateSongs.sort(() => Math.random() - 0.5));
       setCorrectSong(correctSong);
       const newRound = {correctSong, points: 0, hintsUsed: 0, status: undefined};
@@ -61,7 +62,7 @@ const Game = ({
         return [...rounds];
       });
     }
-  }, [roundNum, shuffledSongList]);
+  }, [roundNum, shuffledSongList, songs]);
 
   useEffect(() => {
     setTotalPoints(rounds.reduce((acc, round) => acc + round.points, 0));
@@ -158,6 +159,7 @@ const GameWelcome = (props: {startGame: () => void}) => {
 }
 
 const GameSummary = (props: {startGame: () => void, totalPoints: number, rounds: Array<Round>}) => {
+  const [resultsShared, setResultsShared] = useState(false);
   return <Control position="topright" container={{className: "game-summary"}}>
     <h1>Spillet er over!</h1>
     <ol>
@@ -166,6 +168,12 @@ const GameSummary = (props: {startGame: () => void, totalPoints: number, rounds:
       </li>)}
     </ol>
     <p>Du fikk <h2>{props.totalPoints} poeng</h2></p>
+    <p><button onClick={() => {
+      navigator.clipboard.writeText("Jeg fikk " + props.rounds.filter(round => round.status === "CORRECT").length + " rette og " + props.totalPoints + " poeng i Høgger-geo-guesser! Prøv du også: https://vramdal.github.io/hoggerguesser");
+      setResultsShared(true);
+    }
+    }>Del resultat</button>
+    <><br/>{resultsShared && <span style={{fontWeight: "bold"}}>Resultatet ditt er kopiert til utklippstavlen.<br/> Del det på Facebook!</span>}</></p>
     <p>Trykk på knappen for å starte på nytt.</p>
     <button onClick={props.startGame}>Prøv igjen</button>
   </Control>
