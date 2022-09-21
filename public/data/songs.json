@@ -269,7 +269,11 @@
   },
   {
     "title": "Det er over",
-    "places": [],
+    "places": [
+      "Roa",
+      "Fjordheim pensjonat",
+      "Kjelstad bakeri"
+    ],
     "id": 47
   },
   {
@@ -277,7 +281,6 @@
     "places": [
       "Mengshol",
       "Bøverbru",
-      "Kolbu",
       "Nes på Hedmark"
     ],
     "id": 48
@@ -1479,7 +1482,8 @@
   {
     "title": "Tipping for'n far",
     "places": [
-      "Kolbu"
+      "Kolbu",
+      "Løten"
     ],
     "id": 255
   },

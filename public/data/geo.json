@@ -1590,6 +1590,51 @@
           60.102714675694386
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 106,
+        "radius": 2,
+        "title": "Roa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.5966205,
+          60.2916501
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 107,
+        "radius": 0.1,
+        "title": "Fjordheim pensjonat"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.598658641150204,
+          60.63035391851596
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 108,
+        "radius": 0.1,
+        "title": "Kjelstad bakeri"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.682997841263893,
+          60.78447090399404
+        ]
+      }
     }
   ]
 }
