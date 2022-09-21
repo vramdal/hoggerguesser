@@ -65,12 +65,12 @@ function highlightPlaces(placesIds: Array<number>, mapMarkers: Array<MapMarkerDi
 function App(props: {mode: 'game' | 'atlas'}) {
 
   const loadSongs = () => {
-    let dataSourceUrl = "/hoggerguesser/data/songs.json"; // "https://script.google.com/macros/s/AKfycbzQAduClf9OCizvJijFakTd5T1rptkcA3hTShnkkDVXTxHGD9Bbi1gBT9SuFDRtWLTi/exec?data=songs";
+    let dataSourceUrl = "/hvor-i-vazelina/data/songs.json"; // "https://script.google.com/macros/s/AKfycbzQAduClf9OCizvJijFakTd5T1rptkcA3hTShnkkDVXTxHGD9Bbi1gBT9SuFDRtWLTi/exec?data=songs";
     return fetch(dataSourceUrl).then(res => res.json());
   }
 
   const loadMapFeatures = () => {
-    const geoJsonUrl = "/hoggerguesser/data/geo.json";
+    const geoJsonUrl = "/hvor-i-vazelina/data/geo.json";
     return fetch(geoJsonUrl).then(response => response.json()).then(data => data.features);
   }
 
@@ -292,7 +292,7 @@ function App(props: {mode: 'game' | 'atlas'}) {
               <>
                 {mapMarkers.map(marker => {
                   const icon: Icon = new Icon({
-                    iconUrl: "/hoggerguesser/zlatkodesign-Car-wheel.png",
+                    iconUrl: "/hvor-i-vazelina/zlatkodesign-Car-wheel.png",
                     iconSize: (marker.highlighted ? [30, 30] : [20, 20]),
                     attribution: "Zlatko Design - https://freesvg.org/car-wheel-in-gray-color",
                     className: classNames("map-marker", {highlighted: marker.highlighted, lowlighted: !marker.highlighted}),
