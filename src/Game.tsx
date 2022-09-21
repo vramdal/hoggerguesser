@@ -169,7 +169,7 @@ const GameSummary = (props: {startGame: () => void, totalPoints: number, rounds:
     </ol>
     <p>Du fikk <h2>{props.totalPoints} poeng</h2></p>
     <p><button onClick={() => {
-      navigator.clipboard.writeText("Jeg fikk " + props.rounds.filter(round => round.status === "CORRECT").length + " rette og " + props.totalPoints + " poeng i Høgger-geo-guesser! Prøv du også: https://vramdal.github.io/hoggerguesser");
+      navigator.clipboard.writeText(props.rounds.map(round => round.status).map(status => (status === "CORRECT" ? "✅" : "❌")) + "Jeg fikk " + props.rounds.filter(round => round.status === "CORRECT").length + " rette og " + props.totalPoints + " poeng i Vazelinakunnskap på https://vramdal.github.io/hvor-i-vazelina");
       setResultsShared(true);
     }
     }>Del resultat</button>
