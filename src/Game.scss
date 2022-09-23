@@ -55,6 +55,23 @@
       overflow: hidden;
       text-overflow: ellipsis;
       padding-bottom: 3px;
+
+      &.chosen {
+        outline: 2px solid yellow;
+      }
+      &.wrong {
+        outline: 2px solid red;
+        &.chosen {
+          background-color: pink;
+        }
+      }
+      &.correct {
+        outline: 2px solid green;
+        &.chosen {
+          background-color: lightgreen;
+        }
+      }
+
     }
   }
 

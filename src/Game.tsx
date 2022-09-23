@@ -124,6 +124,7 @@ const Game = ({
                   candidates={candidates}
                   answerSelected={handleAnswer}
                   status={rounds[roundNum]?.status || undefined}
+                  correctSong={correctSong}
               />
           </>
       }
@@ -192,11 +193,13 @@ const GameRound = ({
                      candidates,
                      answerSelected,
                      status,
+                     correctSong
                    }: {
   roundNum: number,
   candidates: Array<Song>,
   answerSelected: (roundNum : number, songId: number, bonus: number) => void,
   status: AnswerStatus,
+  correctSong: Song
 }) => {
   const [countdown, setCountdown] = useState<number>(1000);
   const [answeredSong, setAnsweredSong] = useState<Song | undefined>(undefined);
@@ -231,8 +234,17 @@ const GameRound = ({
     {status !== undefined && <GameRoundResult answerStatus={status} answeredSong={answeredSong!}/>}
     <Control position="bottomleft" container={{className: classNames("game-round-gui")}}>
       <h1>{roundNum + 1}. Hvilken sang er dette?</h1>
-      <p className={"answer-button-wrapper"}>{candidates.map(song =>
-        <button key={song.id} disabled={status !== undefined} onClick={() => answerButtonClicked(song)}>{song.title}</button>)}</p>
+      <p className={"answer-button-wrapper"}>{candidates.map(song => {
+        const buttonClass = classNames("answer-button", {
+          chosen: answeredSong?.id === song.id,
+          correct: status !== undefined && song.id === correctSong.id,
+          wrong: status === 'WRONG' && song.id === answeredSong?.id,
+        }
+        );
+        return <button key={song.id} disabled={status !== undefined}
+                       className={buttonClass}
+                       onClick={() => answerButtonClicked(song)}>{song.title}</button>;
+      })}</p>
 
       <p>Poeng: {countdown}
         <br/> <meter value={countdown} max={1000} min={500} low={600} optimum={700} style={{width: "100%"}}/> </p>
