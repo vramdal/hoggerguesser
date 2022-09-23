@@ -3,6 +3,7 @@ import Control from "react-leaflet-custom-control";
 import React, { useEffect, useState } from "react";
 import './Game.scss';
 import classNames from "classnames";
+import { useIsWebappOutdated } from "./updateHook";
 
 type AnswerStatus = 'CORRECT' | 'WRONG' | undefined;
 
@@ -39,6 +40,7 @@ const Game = ({
   const [totalPoints, setTotalPoints] = useState<number>(0);
   const [shuffledSongList, setShuffledSongList] = useState<Array<Song>>([]);
   const [gameNum, setGameNum] = useState<number>(-1);
+  const [, checkIsOutdated] = useIsWebappOutdated();
 
   useEffect(() => {
     const songsWithPlaces = songs.filter(song => song.places.length > 0);
@@ -97,6 +99,12 @@ const Game = ({
   }, [rounds, songs, showSongTooltips, setRounds]);
 
   const startGame = React.useCallback(() => {
+    checkIsOutdated().then(isOutdated => {
+      if (isOutdated) {
+        console.log("Outdated");
+        window.location.reload();
+      }
+    })
     setRounds([]);
     setRoundNum(0);
     setGameNum(gameNum => gameNum + 1);
@@ -222,12 +230,7 @@ const GameRound = ({
   return <>
     {status !== undefined && <GameRoundResult answerStatus={status} answeredSong={answeredSong!}/>}
     <Control position="bottomleft" container={{className: classNames("game-round-gui")}}>
-      {/*
-    <p>
-      <button onClick={advanceGame}>Neste</button>
-    </p>
-*/}
-      <h1>Hvilken sang er dette?</h1>
+      <h1>{roundNum + 1}. Hvilken sang er dette?</h1>
       <p className={"answer-button-wrapper"}>{candidates.map(song =>
         <button key={song.id} disabled={status !== undefined} onClick={() => answerButtonClicked(song)}>{song.title}</button>)}</p>
 

@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d743a825-c2cf-4108-8e5f-813817333f15" name="Changes" comment="Større font">
-      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/ghactions-toolbar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/buildtools/timestamp.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plymouth.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/timestamp.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/timestamp.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    <list default="true" id="d743a825-c2cf-4108-8e5f-813817333f15" name="Changes" comment="Sjekker timestamp">
+      <change afterPath="$PROJECT_DIR$/src/updateHook.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildtools/timestamp.js" beforeDir="false" afterPath="$PROJECT_DIR$/buildtools/timestamp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/timestamp.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/timestamp.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +136,7 @@
       <workItem from="1663508591527" duration="3570000" />
       <workItem from="1663571972669" duration="2151000" />
       <workItem from="1663665584845" duration="8273000" />
-      <workItem from="1663828897165" duration="8244000" />
+      <workItem from="1663828897165" duration="13157000" />
     </task>
     <task id="LOCAL−00001" summary="Før vi begynner med setBounds">
       <created>1663263168610</created>
@@ -319,7 +312,13 @@
       <option name="presentableId" value="LOCAL−00029" />
       <updated>1663924467041</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL−00030" summary="Build-timestamp">
+      <created>1663925685587</created>
+      <option name="number" value="LOCAL−00030" />
+      <option name="presentableId" value="LOCAL−00030" />
+      <updated>1663925685587</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -359,7 +358,9 @@
     <MESSAGE value="Nytt navn og grafikk" />
     <MESSAGE value="Mobilvennlighet. Går ned til 4 alternativer." />
     <MESSAGE value="Større font" />
-    <option name="LAST_COMMIT_MESSAGE" value="Større font" />
+    <MESSAGE value="Build-timestamp" />
+    <MESSAGE value="Sjekker timestamp" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sjekker timestamp" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
