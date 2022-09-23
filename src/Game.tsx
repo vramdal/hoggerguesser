@@ -167,7 +167,7 @@ const GameSummary = (props: {startGame: () => void, totalPoints: number, rounds:
         {round.correctSong.title} {(round.status === 'CORRECT' && <span className="answer-correct">✅</span>) || <span className="answer-wrong">❌</span>} <span>{round.points} poeng</span>
       </li>)}
     </ol>
-    <p>Du fikk <h2>{props.totalPoints} poeng</h2></p>
+    <p>Du fikk <span className={"stor-skrift"}>{props.totalPoints}</span> poeng</p>
     <p><button onClick={() => {
       navigator.clipboard.writeText(props.rounds.map(round => round.status).map(status => (status === "CORRECT" ? "✅" : "❌")).join("") + " Jeg fikk " + props.rounds.filter(round => round.status === "CORRECT").length + " rette og " + props.totalPoints + " poeng i Vazelinakunnskap på https://vramdal.github.io/hvor-i-vazelina");
       setResultsShared(true);

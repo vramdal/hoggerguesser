@@ -5,6 +5,20 @@
 
 }
 
+.game-welcome, .game-summary, .game-round-result {
+
+  font-size: 12pt;
+
+  button {
+    font-size: 14pt;
+  }
+}
+
+.stor-skrift {
+  font-size: 200%;
+  font-weight: bold;
+}
+
 .game-round-gui {
   //background-color: rgba(255, 255, 255, 0.5);
   background-color: lightyellow;
@@ -60,7 +74,7 @@
 
    button {
      font-size: 14pt;
-      border-radius: 10px;
+      //border-radius: 10px;
      justify-self: stretch;
      display: block;
    }
