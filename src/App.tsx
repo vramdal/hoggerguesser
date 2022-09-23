@@ -234,7 +234,7 @@ function App(props: {mode: 'game' | 'atlas'}) {
           <h1>Vazelina-atlas</h1>
       </header>}
       {props.mode === "game" && <header>
-          <h1>Høgger-geo-guesser</h1>
+          <h1>Hvor i Vazelina-verden?</h1>
       </header>}
       <div id="vazelina-app">
         {props.mode === "atlas" && <aside>
@@ -260,7 +260,7 @@ function App(props: {mode: 'game' | 'atlas'}) {
           >
 
             <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors. <a href="https://www.flaticon.com/free-icons/axe" title="axe icons">Axe icons created by Those Icons - Flaticon</a>'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             {/*
@@ -292,11 +292,11 @@ function App(props: {mode: 'game' | 'atlas'}) {
               <>
                 {mapMarkers.map(marker => {
                   const icon: Icon = new Icon({
-                    iconUrl: "/hvor-i-vazelina/zlatkodesign-Car-wheel.png",
-                    iconSize: (marker.highlighted ? [30, 30] : [20, 20]),
-                    attribution: "Zlatko Design - https://freesvg.org/car-wheel-in-gray-color",
+                    iconUrl: "/hvor-i-vazelina/oks-mapmarker.png",
+                    iconSize: (marker.highlighted ? [30, 40] : [20, 30]),
+                    attribution: "<a href=\"https://www.flaticon.com/free-icons/axe\" title=\"axe icons\">Axe icons created by Those Icons - Flaticon</a>",
                     className: classNames("map-marker", {highlighted: marker.highlighted, lowlighted: !marker.highlighted}),
-                    tooltipAnchor: [0, 0]
+                    tooltipAnchor: [25, 0]
                   });
                   return <Marker eventHandlers={{
                     click: () => {

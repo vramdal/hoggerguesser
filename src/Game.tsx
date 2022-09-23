@@ -169,11 +169,11 @@ const GameSummary = (props: {startGame: () => void, totalPoints: number, rounds:
     </ol>
     <p>Du fikk <h2>{props.totalPoints} poeng</h2></p>
     <p><button onClick={() => {
-      navigator.clipboard.writeText(props.rounds.map(round => round.status).map(status => (status === "CORRECT" ? "✅" : "❌")) + "Jeg fikk " + props.rounds.filter(round => round.status === "CORRECT").length + " rette og " + props.totalPoints + " poeng i Vazelinakunnskap på https://vramdal.github.io/hvor-i-vazelina");
+      navigator.clipboard.writeText(props.rounds.map(round => round.status).map(status => (status === "CORRECT" ? "✅" : "❌")).join("") + " Jeg fikk " + props.rounds.filter(round => round.status === "CORRECT").length + " rette og " + props.totalPoints + " poeng i Vazelinakunnskap på https://vramdal.github.io/hvor-i-vazelina");
       setResultsShared(true);
     }
     }>Del resultat</button>
-    <><br/>{resultsShared && <span style={{fontWeight: "bold"}}>Resultatet ditt er kopiert til utklippstavlen.<br/> Del det på Facebook!</span>}</></p>
+    <><br/>{resultsShared && <span style={{fontWeight: "bold"}}>Resultatet ditt er kopiert til utklippstavlen.<br/> Det kan du lime inn og dele på Facebook.</span>}</></p>
     <p>Trykk på knappen for å starte på nytt.</p>
     <button onClick={props.startGame}>Prøv igjen</button>
   </Control>
