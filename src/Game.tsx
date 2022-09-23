@@ -49,11 +49,11 @@ const Game = ({
 
   useEffect(() => {
     if (roundNum > -1 && roundNum < ROUND_COUNT) {
-      const songsWithPlaces = songs.filter(song => song.places.length > 0);
+      // const songsWithPlaces = songs.filter(song => song.places.length > 0);
       const correctSong = shuffledSongList[roundNum];
       const selectedSongPlaces = correctSong.places;
       const excludedSongs = shuffledSongList.filter(song => song.places.every(place => selectedSongPlaces.includes(place)));
-      const candidateSongs = songs.sort(() => Math.random() - 0.5).filter(song => !excludedSongs.includes(song)).slice(0, 4).concat(correctSong);
+      const candidateSongs = songs.sort(() => Math.random() - 0.5).filter(song => !excludedSongs.includes(song)).slice(0, 3).concat(correctSong);
       setCandidates(candidateSongs.sort(() => Math.random() - 0.5));
       setCorrectSong(correctSong);
       const newRound = {correctSong, points: 0, hintsUsed: 0, status: undefined};
@@ -74,7 +74,7 @@ const Game = ({
       zoomToSong(correctSong.id);
       showSongTooltips(correctSong.id);
     }
-  }, [correctSong, zoomToSong]);
+  }, [correctSong, zoomToSong, showSongTooltips]);
 
   const advanceGame = React.useCallback(() => {
     setRoundNum(roundNum => roundNum + 1);
@@ -164,7 +164,7 @@ const GameSummary = (props: {startGame: () => void, totalPoints: number, rounds:
     <h1>Spillet er over!</h1>
     <ol>
       {props.rounds.map((round, index) => <li key={index}>
-        {round.correctSong.title} {round.status === 'CORRECT' && <span className="answer-correct">✅</span> || <span className="answer-wrong">❌</span>} <span>{round.points} poeng</span>
+        {round.correctSong.title} {(round.status === 'CORRECT' && <span className="answer-correct">✅</span>) || <span className="answer-wrong">❌</span>} <span>{round.points} poeng</span>
       </li>)}
     </ol>
     <p>Du fikk <h2>{props.totalPoints} poeng</h2></p>
