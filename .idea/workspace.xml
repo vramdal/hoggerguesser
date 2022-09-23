@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d743a825-c2cf-4108-8e5f-813817333f15" name="Changes" comment="Større font">
+      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/ghactions-toolbar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buildtools/timestamp.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plymouth.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/timestamp.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/timestamp.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="package" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectId" id="2EnoUoId6ReBKDgDwz4NbjEyMl5" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ACTIVE_CLOUD_PROJECT_ACCOUNT": "vramdal@gmail.com",
+    "ACTIVE_CLOUD_PROJECT_ID": "cloud-run-eksperiment",
+    "ACTIVE_CLOUD_PROJECT_NAME": "cloud-run-eksperiment",
+    "ACTIVE_CLOUD_PROJECT_NUMBER": "63735712387",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "TF_FMT": "false",
+    "WebServerToolWindowFactoryState": "false",
+    "app.teamhub.trackedBranches": "sdk0v5/master",
+    "com.google.cloudcode.ide_session_index": "20220922_0000",
+    "jdk.selected.JAVA_MODULE": "openjdk-17",
+    "js.introduce.parameter.generate.optional": "false",
+    "js.last.introduce.type": "CONST",
+    "js.linters.configure.manually.selectedeslint": "true",
+    "last_opened_file_path": "/Users/vidarramdal/dev/vazelina-kart-react/public/data",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.selected.package.eslint": "/Users/vidarramdal/dev/vazelina-kart-react/node_modules/eslint",
+    "node.js.selected.package.standard": "",
+    "nodejs_interpreter_path": "/Users/vidarramdal/.nvm/versions/node/v16.15.1/bin/node",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
+    "ts.external.directory.path": "/Users/vidarramdal/dev/vazelina-kart-react/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="ReactDesignerToolWindowState">
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.rcb.reactComponents" value="true" />
+        <entry key="com.haulmont.rcb.reactInspector" value="true" />
+      </map>
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/data" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/data" />
+      <recent name="$PROJECT_DIR$/public" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="js.build_tools.npm" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="npm.start">
+    <configuration name="build with errors" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs>
+        <env name="CI" value="true" />
+      </envs>
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="npm.start" />
+      <item itemvalue="npm.build with errors" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d743a825-c2cf-4108-8e5f-813817333f15" name="Changes" comment="" />
+      <created>1663240729904</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1663240729904</updated>
+      <workItem from="1663240732082" duration="67429000" />
+      <workItem from="1663508591527" duration="3570000" />
+      <workItem from="1663571972669" duration="2151000" />
+      <workItem from="1663665584845" duration="8273000" />
+      <workItem from="1663828897165" duration="8244000" />
+    </task>
+    <task id="LOCAL−00001" summary="Før vi begynner med setBounds">
+      <created>1663263168610</created>
+      <option name="number" value="LOCAL−00001" />
+      <option name="presentableId" value="LOCAL−00001" />
+      <updated>1663263168610</updated>
+    </task>
+    <task id="LOCAL−00002" summary="Fungerende kart og sangliste">
+      <created>1663282348359</created>
+      <option name="number" value="LOCAL−00002" />
+      <option name="presentableId" value="LOCAL−00002" />
+      <updated>1663282348359</updated>
+    </task>
+    <task id="LOCAL−00003" summary="Fungerende grid">
+      <created>1663359837863</created>
+      <option name="number" value="LOCAL−00003" />
+      <option name="presentableId" value="LOCAL−00003" />
+      <updated>1663359837863</updated>
+    </task>
+    <task id="LOCAL−00004" summary="Spill-komponent">
+      <created>1663440104966</created>
+      <option name="number" value="LOCAL−00004" />
+      <option name="presentableId" value="LOCAL−00004" />
+      <updated>1663440104966</updated>
+    </task>
+    <task id="LOCAL−00005" summary="Github action">
+      <created>1663440725787</created>
+      <option name="number" value="LOCAL−00005" />
+      <option name="presentableId" value="LOCAL−00005" />
+      <updated>1663440725787</updated>
+    </task>
+    <task id="LOCAL−00006" summary="Github action">
+      <created>1663441155933</created>
+      <option name="number" value="LOCAL−00006" />
+      <option name="presentableId" value="LOCAL−00006" />
+      <updated>1663441155933</updated>
+    </task>
+    <task id="LOCAL−00007" summary="Github action">
+      <created>1663443112894</created>
+      <option name="number" value="LOCAL−00007" />
+      <option name="presentableId" value="LOCAL−00007" />
+      <updated>1663443112894</updated>
+    </task>
+    <task id="LOCAL−00008" summary="Github action">
+      <created>1663443615109</created>
+      <option name="number" value="LOCAL−00008" />
+      <option name="presentableId" value="LOCAL−00008" />
+      <updated>1663443615109</updated>
+    </task>
+    <task id="LOCAL−00009" summary="useCallback">
+      <created>1663447559322</created>
+      <option name="number" value="LOCAL−00009" />
+      <option name="presentableId" value="LOCAL−00009" />
+      <updated>1663447559322</updated>
+    </task>
+    <task id="LOCAL−00010" summary="useCallback">
+      <created>1663448498415</created>
+      <option name="number" value="LOCAL−00010" />
+      <option name="presentableId" value="LOCAL−00010" />
+      <updated>1663448498415</updated>
+    </task>
+    <task id="LOCAL−00011" summary="useCallback">
+      <created>1663450598374</created>
+      <option name="number" value="LOCAL−00011" />
+      <option name="presentableId" value="LOCAL−00011" />
+      <updated>1663450598374</updated>
+    </task>
+    <task id="LOCAL−00012" summary="Bytte ut GHaction">
+      <created>1663451333491</created>
+      <option name="number" value="LOCAL−00012" />
+      <option name="presentableId" value="LOCAL−00012" />
+      <updated>1663451333491</updated>
+    </task>
+    <task id="LOCAL−00013" summary="Bytte ut GHaction">
+      <created>1663451470382</created>
+      <option name="number" value="LOCAL−00013" />
+      <option name="presentableId" value="LOCAL−00013" />
+      <updated>1663451470382</updated>
+    </task>
+    <task id="LOCAL−00014" summary="Bytte ut GHaction">
+      <created>1663451589776</created>
+      <option name="number" value="LOCAL−00014" />
+      <option name="presentableId" value="LOCAL−00014" />
+      <updated>1663451589776</updated>
+    </task>
+    <task id="LOCAL−00015" summary="Bytte ut GHaction">
+      <created>1663451907884</created>
+      <option name="number" value="LOCAL−00015" />
+      <option name="presentableId" value="LOCAL−00015" />
+      <updated>1663451907884</updated>
+    </task>
+    <task id="LOCAL−00016" summary="Hoster på subdirectory">
+      <created>1663452587724</created>
+      <option name="number" value="LOCAL−00016" />
+      <option name="presentableId" value="LOCAL−00016" />
+      <updated>1663452587724</updated>
+    </task>
+    <task id="LOCAL−00017" summary="Skjule markers som ikke er highlighted">
+      <created>1663503100214</created>
+      <option name="number" value="LOCAL−00017" />
+      <option name="presentableId" value="LOCAL−00017" />
+      <updated>1663503100214</updated>
+    </task>
+    <task id="LOCAL−00018" summary="Unngå å få samme sang flere ganger">
+      <created>1663507026685</created>
+      <option name="number" value="LOCAL−00018" />
+      <option name="presentableId" value="LOCAL−00018" />
+      <updated>1663507026685</updated>
+    </task>
+    <task id="LOCAL−00019" summary="Vise stedsnavn pr default">
+      <created>1663507617118</created>
+      <option name="number" value="LOCAL−00019" />
+      <option name="presentableId" value="LOCAL−00019" />
+      <updated>1663507617118</updated>
+    </task>
+    <task id="LOCAL−00020" summary="Fjerne hint-knapp">
+      <created>1663508066947</created>
+      <option name="number" value="LOCAL−00020" />
+      <option name="presentableId" value="LOCAL−00020" />
+      <updated>1663508066947</updated>
+    </task>
+    <task id="LOCAL−00021" summary="Fjerner Amerika og Skomperud som steder">
+      <created>1663508085934</created>
+      <option name="number" value="LOCAL−00021" />
+      <option name="presentableId" value="LOCAL−00021" />
+      <updated>1663508085934</updated>
+    </task>
+    <task id="LOCAL−00022" summary="Fikser bug hvor kandidater ikke ble byttet ut mellom hvert spørsmål">
+      <created>1663511786416</created>
+      <option name="number" value="LOCAL−00022" />
+      <option name="presentableId" value="LOCAL−00022" />
+      <updated>1663511786416</updated>
+    </task>
+    <task id="LOCAL−00023" summary="Metadata for some. Gtag.">
+      <created>1663795159819</created>
+      <option name="number" value="LOCAL−00023" />
+      <option name="presentableId" value="LOCAL−00023" />
+      <updated>1663795159819</updated>
+    </task>
+    <task id="LOCAL−00024" summary="Legger til data for Det er over">
+      <created>1663796516383</created>
+      <option name="number" value="LOCAL−00024" />
+      <option name="presentableId" value="LOCAL−00024" />
+      <updated>1663796516383</updated>
+    </task>
+    <task id="LOCAL−00025" summary="Riktig/feil-ikoner i clipboard">
+      <created>1663796536737</created>
+      <option name="number" value="LOCAL−00025" />
+      <option name="presentableId" value="LOCAL−00025" />
+      <updated>1663796536737</updated>
+    </task>
+    <task id="LOCAL−00026" summary="hoggerguesser -&gt; hvor-i-vazelina">
+      <created>1663796842382</created>
+      <option name="number" value="LOCAL−00026" />
+      <option name="presentableId" value="LOCAL−00026" />
+      <updated>1663796842382</updated>
+    </task>
+    <task id="LOCAL−00027" summary="Nytt navn og grafikk">
+      <created>1663921932816</created>
+      <option name="number" value="LOCAL−00027" />
+      <option name="presentableId" value="LOCAL−00027" />
+      <updated>1663921932816</updated>
+    </task>
+    <task id="LOCAL−00028" summary="Mobilvennlighet. Går ned til 4 alternativer.">
+      <created>1663923910165</created>
+      <option name="number" value="LOCAL−00028" />
+      <option name="presentableId" value="LOCAL−00028" />
+      <updated>1663923910165</updated>
+    </task>
+    <task id="LOCAL−00029" summary="Større font">
+      <created>1663924467041</created>
+      <option name="number" value="LOCAL−00029" />
+      <option name="presentableId" value="LOCAL−00029" />
+      <updated>1663924467041</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Før vi begynner med setBounds" />
+    <MESSAGE value="Fungerende kart og sangliste" />
+    <MESSAGE value="Fungerende grid" />
+    <MESSAGE value="Spill-komponent" />
+    <MESSAGE value="Github action" />
+    <MESSAGE value="useCallback" />
+    <MESSAGE value="Bytte ut GHaction" />
+    <MESSAGE value="Hoster på subdirectory" />
+    <MESSAGE value="Skjule markers som ikke er highlighted" />
+    <MESSAGE value="Start- og oppsummeringsskjermbilder" />
+    <MESSAGE value="Unngå å få samme sang flere ganger" />
+    <MESSAGE value="Vise stedsnavn pr default" />
+    <MESSAGE value="Fjerne hint-knapp" />
+    <MESSAGE value="Fjerner Amerika og Skomperud som steder" />
+    <MESSAGE value="Fikser bug hvor kandidater ikke ble byttet ut mellom hvert spørsmål" />
+    <MESSAGE value="Metadata for some. Gtag." />
+    <MESSAGE value="Legger til data for Det er over" />
+    <MESSAGE value="Riktig/feil-ikoner i clipboard" />
+    <MESSAGE value="hoggerguesser -&gt; hvor-i-vazelina" />
+    <MESSAGE value="Nytt navn og grafikk" />
+    <MESSAGE value="Mobilvennlighet. Går ned til 4 alternativer." />
+    <MESSAGE value="Større font" />
+    <option name="LAST_COMMIT_MESSAGE" value="Større font" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

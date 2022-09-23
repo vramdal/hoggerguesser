@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GhActionsToolbarSettings">
+    <option name="customRepos">
+      <map>
+        <entry key="git@github.com:oslokommune/selvreg-pasient.git">
+          <value>
+            <RepoSettings />
+          </value>
+        </entry>
+        <entry key="https://github.com/oslokommune/selvreg-ansatt-frontend.git">
+          <value>
+            <RepoSettings />
+          </value>
+        </entry>
+        <entry key="https://github.com/oslokommune/selvreg-pasient-frontend">
+          <value>
+            <RepoSettings />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

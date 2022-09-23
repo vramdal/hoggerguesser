@@ -12,6 +12,7 @@ import {
 } from "leaflet";
 import classNames from "classnames";
 import Game from "./Game";
+import { buildTimestamp } from "./timestamp";
 
 type SongPlace = {
   name: string,
@@ -63,6 +64,10 @@ function highlightPlaces(placesIds: Array<number>, mapMarkers: Array<MapMarkerDi
 
 
 function App(props: {mode: 'game' | 'atlas'}) {
+
+  useEffect(() => {
+    console.log("buildTimestamp", buildTimestamp);
+  }, [buildTimestamp, console]);
 
   const loadSongs = () => {
     let dataSourceUrl = "/hvor-i-vazelina/data/songs.json"; // "https://script.google.com/macros/s/AKfycbzQAduClf9OCizvJijFakTd5T1rptkcA3hTShnkkDVXTxHGD9Bbi1gBT9SuFDRtWLTi/exec?data=songs";
