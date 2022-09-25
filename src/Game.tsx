@@ -166,6 +166,9 @@ const GameRoundResult = (props: {answerStatus: AnswerStatus, answeredSong: Song}
 
 const GameWelcome = (props: {startGame: () => void}) => {
   return <Control position="topright" container={{className: "game-welcome"}}>
+    <figure className={"logo-wrapper"}>
+      <img src={"/hvor-i-vazelina/favicon.svg"} alt="Logo"/>
+    </figure>
     <h1>Hvor godt kjenner du Vazelina-geografien?</h1>
     <p>I dette spillet blir du plassert foran et kart, hvor ett eller flere steder er merket.</p>
     <p>Hvilken sang er det som nevner disse stedene? Velg riktig alternativ, og du får poeng.

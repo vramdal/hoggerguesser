@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d743a825-c2cf-4108-8e5f-813817333f15" name="Changes" comment="Open Graph image">
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+    <list default="true" id="d743a825-c2cf-4108-8e5f-813817333f15" name="Changes" comment="fb:app_id (https://yoast.com/help/fb-app-id-warnings/#h-using-facebook-s-default-app-id)">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +133,7 @@
       <workItem from="1663571972669" duration="2151000" />
       <workItem from="1663665584845" duration="8273000" />
       <workItem from="1663828897165" duration="14453000" />
-      <workItem from="1663938055170" duration="5602000" />
+      <workItem from="1663938055170" duration="6583000" />
     </task>
     <task id="LOCAL−00001" summary="Før vi begynner med setBounds">
       <created>1663263168610</created>
@@ -350,7 +351,25 @@
       <option name="presentableId" value="LOCAL−00036" />
       <updated>1664124067880</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL−00037" summary="Open Graph image">
+      <created>1664124619589</created>
+      <option name="number" value="LOCAL−00037" />
+      <option name="presentableId" value="LOCAL−00037" />
+      <updated>1664124619589</updated>
+    </task>
+    <task id="LOCAL−00038" summary="og:description">
+      <created>1664124916109</created>
+      <option name="number" value="LOCAL−00038" />
+      <option name="presentableId" value="LOCAL−00038" />
+      <updated>1664124916109</updated>
+    </task>
+    <task id="LOCAL−00039" summary="fb:app_id (https://yoast.com/help/fb-app-id-warnings/#h-using-facebook-s-default-app-id)">
+      <created>1664124982903</created>
+      <option name="number" value="LOCAL−00039" />
+      <option name="presentableId" value="LOCAL−00039" />
+      <updated>1664124982903</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -368,8 +387,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Github action" />
-    <MESSAGE value="useCallback" />
     <MESSAGE value="Bytte ut GHaction" />
     <MESSAGE value="Hoster på subdirectory" />
     <MESSAGE value="Skjule markers som ikke er highlighted" />
@@ -393,7 +410,9 @@
     <MESSAGE value="Fjerne warnings i konsoll-output (https://stackoverflow.com/questions/72442915/typeerror-cannot-read-properties-of-null-reading-leaflet-disable-click)" />
     <MESSAGE value="Cache-busting i update-sjekk" />
     <MESSAGE value="Open Graph image" />
-    <option name="LAST_COMMIT_MESSAGE" value="Open Graph image" />
+    <MESSAGE value="og:description" />
+    <MESSAGE value="fb:app_id (https://yoast.com/help/fb-app-id-warnings/#h-using-facebook-s-default-app-id)" />
+    <option name="LAST_COMMIT_MESSAGE" value="fb:app_id (https://yoast.com/help/fb-app-id-warnings/#h-using-facebook-s-default-app-id)" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
