@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d743a825-c2cf-4108-8e5f-813817333f15" name="Changes" comment="Farger på svar-knapper">
-      <change afterPath="$PROJECT_DIR$/public/favicon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/logo.vectornator" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ghactions-toolbar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ghactions-toolbar.xml" afterDir="false" />
+    <list default="true" id="d743a825-c2cf-4108-8e5f-813817333f15" name="Changes" comment="Nytt favicon">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +133,7 @@
       <workItem from="1663571972669" duration="2151000" />
       <workItem from="1663665584845" duration="8273000" />
       <workItem from="1663828897165" duration="14453000" />
-      <workItem from="1663938055170" duration="3037000" />
+      <workItem from="1663938055170" duration="4131000" />
     </task>
     <task id="LOCAL−00001" summary="Før vi begynner med setBounds">
       <created>1663263168610</created>
@@ -330,7 +327,13 @@
       <option name="presentableId" value="LOCAL−00032" />
       <updated>1663933395404</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL−00033" summary="Nytt favicon">
+      <created>1664108193492</created>
+      <option name="number" value="LOCAL−00033" />
+      <option name="presentableId" value="LOCAL−00033" />
+      <updated>1664108193492</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -348,7 +351,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Før vi begynner med setBounds" />
     <MESSAGE value="Fungerende kart og sangliste" />
     <MESSAGE value="Fungerende grid" />
     <MESSAGE value="Spill-komponent" />
@@ -373,7 +375,8 @@
     <MESSAGE value="Build-timestamp" />
     <MESSAGE value="Sjekker timestamp" />
     <MESSAGE value="Farger på svar-knapper" />
-    <option name="LAST_COMMIT_MESSAGE" value="Farger på svar-knapper" />
+    <MESSAGE value="Nytt favicon" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nytt favicon" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

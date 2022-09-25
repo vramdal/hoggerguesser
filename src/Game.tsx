@@ -1,6 +1,6 @@
 import { Song } from "./types";
 import Control from "react-leaflet-custom-control";
-import React, { useEffect, useState } from "react";
+import React, { MouseEventHandler, useEffect, useState } from "react";
 import './Game.scss';
 import classNames from "classnames";
 import { useIsWebappOutdated } from "./updateHook";
@@ -12,6 +12,14 @@ const ROUND_COUNT = 5;
 
 type GameContextType = { advanceGame: () => void, correctSong: Song, showTooltipHints: (songId: number) => void };
 const GameContext = React.createContext<GameContextType | undefined>(undefined);
+
+const stopEventPropagation = (wrapped: MouseEventHandler) : MouseEventHandler => {
+  return (event) => {
+    event.stopPropagation();
+    wrapped(event);
+
+  }
+}
 
 type Round = {
   correctSong: Song,
@@ -152,7 +160,7 @@ const GameRoundResult = (props: {answerStatus: AnswerStatus, answeredSong: Song}
         <h1>Feil</h1>
         Riktig svar var <h2>{game.correctSong.title}</h2>
     </>}
-    <button onClick={game.advanceGame}>Neste</button>
+    <button onClick={stopEventPropagation(game.advanceGame)}>Neste</button>
   </Control>
 };
 
@@ -163,7 +171,7 @@ const GameWelcome = (props: {startGame: () => void}) => {
     <p>Hvilken sang er det som nevner disse stedene? Velg riktig alternativ, og du får poeng.
       Du får flere poeng jo raskere du svarer.</p>
     <p>Du får {ROUND_COUNT} spørsmål. Lykke til!</p>
-    <button onClick={props.startGame}>Start</button>
+    <button onClick={stopEventPropagation(props.startGame)}>Start</button>
   </Control>
 }
 
@@ -177,14 +185,14 @@ const GameSummary = (props: {startGame: () => void, totalPoints: number, rounds:
       </li>)}
     </ol>
     <p>Du fikk <span className={"stor-skrift"}>{props.totalPoints}</span> poeng</p>
-    <p><button onClick={() => {
+    <p><button onClick={stopEventPropagation(() => {
       navigator.clipboard.writeText(props.rounds.map(round => round.status).map(status => (status === "CORRECT" ? "✅" : "❌")).join("") + " Jeg fikk " + props.rounds.filter(round => round.status === "CORRECT").length + " rette og " + props.totalPoints + " poeng i Vazelinakunnskap på https://vramdal.github.io/hvor-i-vazelina");
       setResultsShared(true);
-    }
+    })
     }>Del resultat</button>
     <><br/>{resultsShared && <span style={{fontWeight: "bold"}}>Resultatet ditt er kopiert til utklippstavlen.<br/> Det kan du lime inn og dele på Facebook.</span>}</></p>
     <p>Trykk på knappen for å starte på nytt.</p>
-    <button onClick={props.startGame}>Prøv igjen</button>
+    <button onClick={stopEventPropagation(props.startGame)}>Prøv igjen</button>
   </Control>
 }
 
@@ -243,7 +251,7 @@ const GameRound = ({
         );
         return <button key={song.id} disabled={status !== undefined}
                        className={buttonClass}
-                       onClick={() => answerButtonClicked(song)}>{song.title}</button>;
+                       onClick={stopEventPropagation(() => answerButtonClicked(song))}>{song.title}</button>;
       })}</p>
 
       <p>Poeng: {countdown}
