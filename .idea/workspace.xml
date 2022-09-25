@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d743a825-c2cf-4108-8e5f-813817333f15" name="Changes" comment="fb:app_id (https://yoast.com/help/fb-app-id-warnings/#h-using-facebook-s-default-app-id)">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.tsx" afterDir="false" />
+    <list default="true" id="d743a825-c2cf-4108-8e5f-813817333f15" name="Changes" comment="Nye sanger">
+      <change beforePath="$PROJECT_DIR$/public/data/songs.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/data/songs.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +132,7 @@
       <workItem from="1663571972669" duration="2151000" />
       <workItem from="1663665584845" duration="8273000" />
       <workItem from="1663828897165" duration="14453000" />
-      <workItem from="1663938055170" duration="6583000" />
+      <workItem from="1663938055170" duration="8126000" />
     </task>
     <task id="LOCAL−00001" summary="Før vi begynner med setBounds">
       <created>1663263168610</created>
@@ -369,7 +368,19 @@
       <option name="presentableId" value="LOCAL−00039" />
       <updated>1664124982903</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL−00040" summary="Logo">
+      <created>1664125687136</created>
+      <option name="number" value="LOCAL−00040" />
+      <option name="presentableId" value="LOCAL−00040" />
+      <updated>1664125687136</updated>
+    </task>
+    <task id="LOCAL−00041" summary="Nye sanger">
+      <created>1664127515002</created>
+      <option name="number" value="LOCAL−00041" />
+      <option name="presentableId" value="LOCAL−00041" />
+      <updated>1664127515002</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -387,8 +398,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Bytte ut GHaction" />
-    <MESSAGE value="Hoster på subdirectory" />
     <MESSAGE value="Skjule markers som ikke er highlighted" />
     <MESSAGE value="Start- og oppsummeringsskjermbilder" />
     <MESSAGE value="Unngå å få samme sang flere ganger" />
@@ -412,7 +421,9 @@
     <MESSAGE value="Open Graph image" />
     <MESSAGE value="og:description" />
     <MESSAGE value="fb:app_id (https://yoast.com/help/fb-app-id-warnings/#h-using-facebook-s-default-app-id)" />
-    <option name="LAST_COMMIT_MESSAGE" value="fb:app_id (https://yoast.com/help/fb-app-id-warnings/#h-using-facebook-s-default-app-id)" />
+    <MESSAGE value="Logo" />
+    <MESSAGE value="Nye sanger" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nye sanger" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

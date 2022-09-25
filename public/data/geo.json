@@ -1635,6 +1635,96 @@
           60.78447090399404
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 109,
+        "radius": 4,
+        "title": "Holmestrand"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.305408211061692,
+          59.48935794106559
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 110,
+        "radius": 1,
+        "title": "Ottestad"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.137017319888026,
+          60.746733985229874
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 111,
+        "radius": 1000,
+        "title": "Italia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.966171926145533,
+          42.44947284556441
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 112,
+        "radius": 22,
+        "title": "Roma"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.500829974444564,
+          41.899520725673284
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 113,
+        "radius": 2,
+        "title": "Ørsta"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.132707678777395,
+          62.19847277794033
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 114,
+        "radius": 1,
+        "title": "Farfisa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.522800233085555,
+          43.51472952623465
+        ]
+      }
     }
   ]
 }
