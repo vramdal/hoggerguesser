@@ -234,7 +234,7 @@ function App(props: {mode: 'game' | 'atlas'}) {
           <h1>Vazelina-atlas</h1>
       </header>}
       {props.mode === "game" && <header>
-          <h1>Hvor i Vazelina-verden?</h1>
+          {/*<h1>Hvor i Vazelina-verden?</h1>*/}
       </header>}
       <div id="vazelina-app">
         {props.mode === "atlas" && <aside>

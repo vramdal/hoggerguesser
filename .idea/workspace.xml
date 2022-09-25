@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d743a825-c2cf-4108-8e5f-813817333f15" name="Changes" comment="Sjekker timestamp">
+    <list default="true" id="d743a825-c2cf-4108-8e5f-813817333f15" name="Changes" comment="Farger på svar-knapper">
+      <change afterPath="$PROJECT_DIR$/public/favicon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/logo.vectornator" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ghactions-toolbar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ghactions-toolbar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +51,7 @@
     "TF_FMT": "false",
     "WebServerToolWindowFactoryState": "false",
     "app.teamhub.trackedBranches": "sdk0v5/master",
-    "com.google.cloudcode.ide_session_index": "20220922_0000",
+    "com.google.cloudcode.ide_session_index": "20220923_0000",
     "jdk.selected.JAVA_MODULE": "openjdk-17",
     "js.introduce.parameter.generate.optional": "false",
     "js.last.introduce.type": "CONST",
@@ -133,7 +135,8 @@
       <workItem from="1663508591527" duration="3570000" />
       <workItem from="1663571972669" duration="2151000" />
       <workItem from="1663665584845" duration="8273000" />
-      <workItem from="1663828897165" duration="13891000" />
+      <workItem from="1663828897165" duration="14453000" />
+      <workItem from="1663938055170" duration="3037000" />
     </task>
     <task id="LOCAL−00001" summary="Før vi begynner med setBounds">
       <created>1663263168610</created>
@@ -321,7 +324,13 @@
       <option name="presentableId" value="LOCAL−00031" />
       <updated>1663932554138</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL−00032" summary="Farger på svar-knapper">
+      <created>1663933395404</created>
+      <option name="number" value="LOCAL−00032" />
+      <option name="presentableId" value="LOCAL−00032" />
+      <updated>1663933395404</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -363,7 +372,8 @@
     <MESSAGE value="Større font" />
     <MESSAGE value="Build-timestamp" />
     <MESSAGE value="Sjekker timestamp" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sjekker timestamp" />
+    <MESSAGE value="Farger på svar-knapper" />
+    <option name="LAST_COMMIT_MESSAGE" value="Farger på svar-knapper" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
