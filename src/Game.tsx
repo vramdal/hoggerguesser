@@ -4,6 +4,7 @@ import React, { MouseEventHandler, useEffect, useState } from "react";
 import './Game.scss';
 import classNames from "classnames";
 import { useIsWebappOutdated } from "./updateHook";
+import { shuffle } from "./browser";
 
 type AnswerStatus = 'CORRECT' | 'WRONG' | undefined;
 
@@ -28,6 +29,7 @@ type Round = {
   points: number,
   hintsUsed: number
 };
+
 const Game = ({
                 songs,
                 zoomToSong,
@@ -52,7 +54,7 @@ const Game = ({
 
   useEffect(() => {
     const songsWithPlaces = songs.filter(song => song.places.length > 0);
-    const shuffledSongList = songsWithPlaces.sort(() => Math.random() - 0.5);
+    const shuffledSongList = shuffle(songsWithPlaces);
     setShuffledSongList(shuffledSongList);
   }, [songs, gameNum]);
 
@@ -63,8 +65,8 @@ const Game = ({
       const correctSong = shuffledSongList[roundNum];
       const selectedSongPlaces = correctSong.places;
       const excludedSongs = shuffledSongList.filter(song => song.places.every(place => selectedSongPlaces.includes(place)));
-      const candidateSongs = songs.sort(() => Math.random() - 0.5).filter(song => !excludedSongs.includes(song)).slice(0, 3).concat(correctSong);
-      setCandidates(candidateSongs.sort(() => Math.random() - 0.5));
+      const candidateSongs = shuffle(songs).filter(song => !excludedSongs.includes(song)).slice(0, 3).concat(correctSong);
+      setCandidates(shuffle(candidateSongs));
       setCorrectSong(correctSong);
       const newRound = {correctSong, points: 0, hintsUsed: 0, status: undefined};
       setRounds(rounds => {
@@ -151,7 +153,7 @@ const GameRoundResult = (props: {answerStatus: AnswerStatus, answeredSong: Song}
 
   const game = useGame();
 
-  return <Control position="topright" container={{className: classNames("game-round-result", panelClass)}}>
+  return <Control position="topright" container={{className: classNames("game-round-result", panelClass), role: "alert"}}>
     <p>Du svarte {props.answeredSong.title}</p>
     {props.answerStatus === 'CORRECT' && <>
         <h1>Riktig</h1>

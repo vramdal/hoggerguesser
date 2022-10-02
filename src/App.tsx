@@ -12,6 +12,7 @@ import {
 } from "leaflet";
 import classNames from "classnames";
 import Game from "./Game";
+import { loadMapFeatures, loadSongs } from "./fetchers";
 
 type SongPlace = {
   name: string,
@@ -62,17 +63,8 @@ function highlightPlaces(placesIds: Array<number>, mapMarkers: Array<MapMarkerDi
 }
 
 
+
 function App(props: {mode: 'game' | 'atlas'}) {
-
-  const loadSongs = () => {
-    let dataSourceUrl = "/hvor-i-vazelina/data/songs.json"; // "https://script.google.com/macros/s/AKfycbzQAduClf9OCizvJijFakTd5T1rptkcA3hTShnkkDVXTxHGD9Bbi1gBT9SuFDRtWLTi/exec?data=songs";
-    return fetch(dataSourceUrl).then(res => res.json());
-  }
-
-  const loadMapFeatures = () => {
-    const geoJsonUrl = "/hvor-i-vazelina/data/geo.json";
-    return fetch(geoJsonUrl).then(response => response.json()).then(data => data.features);
-  }
 
   const [songs, setSongs] = React.useState<Array<Song>>([]);
   const [mapMarkers, setMapMarkers] = React.useState<Array<MapMarkerDisplay>>([]);
@@ -150,7 +142,10 @@ function App(props: {mode: 'game' | 'atlas'}) {
       setByPlaceId(mergeByPlaceId(songs, mapFeatures));
       setMapMarkers(mapFeatures.map(featureToMarker));
       setIsLoaded(true);
-    })
+    }).catch(err => {
+      console.error(err);
+      throw err;
+    });
   }, []);
 
   useEffect(() => {
@@ -263,25 +258,6 @@ function App(props: {mode: 'game' | 'atlas'}) {
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors. <a href="https://www.flaticon.com/free-icons/axe" title="axe icons">Axe icons created by Those Icons - Flaticon</a>'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            {/*
-            <Pane name={"game-gui-pane"}>
-              <Circle center={[
-                60.81945839006743,
-                11.343143733783839,
-
-              ]
-              } radius={200} pathOptions={{ color: 'blue' }} className={"my-circle"}/>
-            </Pane>
-*/}
-
-            {/*
-            <Control position="bottomleft" container={{className: "game-gui"}}>
-              <h1>Hvilken sang er dette?</h1>
-              <button>Borghild</button>
-              <button>Feil sie ta Mjøsa</button>
-            </Control>
-*/}
-
             {isLoaded &&
                 <Game songs={songs}
                       zoomToSong={zoomToSong}

@@ -3,6 +3,11 @@
   <component name="GhActionsToolbarSettings">
     <option name="customRepos">
       <map>
+        <entry key="git@github.com:/oslokommune/origo-booking.git">
+          <value>
+            <RepoSettings />
+          </value>
+        </entry>
         <entry key="git@github.com:/vramdal/hoggerguesser.git">
           <value>
             <RepoSettings />

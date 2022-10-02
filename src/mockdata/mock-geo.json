@@ -1,0 +1,35 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 0,
+        "radius": 0.1,
+        "title": "Axel Dønnums slakteri"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.181168181056039,
+          60.31346874324773
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1,
+        "radius": 0.1,
+        "title": "Badet på Lena"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.816041,
+          60.674735
+        ]
+      }
+    }
+  ]
+}
