@@ -1725,6 +1725,66 @@
           43.51472952623465
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 115,
+        "radius": 600,
+        "title": "Polen"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.557766819320726,
+          52.21482339260161
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 116,
+        "radius": 20,
+        "title": "Warzawa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.008036058834477,
+          52.236773983602376
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 117,
+        "radius": 0.1,
+        "title": "Rambekkmoen"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.696342069395582,
+          60.77953962936901
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 118,
+        "radius": 0.1,
+        "title": "Håkonshall"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.669541621431923,
+          60.66331862316718
+        ]
+      }
     }
   ]
 }

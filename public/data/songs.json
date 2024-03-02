@@ -332,7 +332,10 @@
   },
   {
     "title": "Dumt",
-    "places": [],
+    "places": [
+      "Nes på Hedmark",
+      "Mjøsferja"
+    ],
     "id": 54
   },
   {
@@ -359,8 +362,7 @@
     "title": "En stor sølvgrå lastebil",
     "places": [
       "Kristiansand",
-      "Hadeland",
-      "Kristiansand"
+      "Hadeland"
     ],
     "id": 59
   },
@@ -405,7 +407,10 @@
   },
   {
     "title": "Fin som en præst",
-    "places": [],
+    "places": [
+      "Polen",
+      "Warzawa"
+    ],
     "id": 66
   },
   {
@@ -421,7 +426,10 @@
   },
   {
     "title": "Flæsk-purka Anna",
-    "places": [],
+    "places": [
+      "Kolbu",
+      "Rambekkmoen"
+    ],
     "id": 68
   },
   {
@@ -436,7 +444,9 @@
   },
   {
     "title": "For en råtass",
-    "places": [],
+    "places": [
+      "Vardal"
+    ],
     "id": 71
   },
   {
@@ -1534,7 +1544,9 @@
   },
   {
     "title": "Østbys gammaldans",
-    "places": [],
+    "places": [
+      "Håkonshall"
+    ],
     "id": 264
   },
   {
